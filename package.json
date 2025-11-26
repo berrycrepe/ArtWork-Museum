@@ -1,0 +1,15 @@
+{
+  "name": "artwork-museum",
+  "version": "1.0.0",
+  "description": "Our Museum web app with collaborative drawing and gallery features",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js"
+  },
+  "keywords": ["drawing", "gallery", "museum"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}
