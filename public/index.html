@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Museum</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Community Gallery</p>
+      <h1>Our Museum</h1>
+      <p class="lede">Draw, experiment, and curate your own artwork. Save it to the museum and see what others have created.</p>
+      <div class="actions">
+        <button id="btn-new-canvas" class="ghost">New canvas</button>
+        <button id="btn-download" class="primary">Download PNG</button>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="meta-card">
+        <p class="label">Brush</p>
+        <div class="row">
+          <input type="color" id="color-picker" value="#3b82f6" />
+          <input type="range" id="size-range" min="2" max="60" value="8" />
+          <span id="size-value">8px</span>
+        </div>
+        <label class="stacked">
+          Opacity
+          <input type="range" id="opacity-range" min="0.1" max="1" step="0.05" value="1" />
+          <span id="opacity-value">100%</span>
+        </label>
+      </div>
+      <div class="meta-card">
+        <p class="label">Modes</p>
+        <div class="pill-group" id="mode-buttons">
+          <button data-mode="pen" class="active">Pen</button>
+          <button data-mode="eraser">Eraser</button>
+          <button data-mode="highlighter">Highlighter</button>
+        </div>
+        <label class="stacked">
+          Shape tool
+          <select id="shape-select">
+            <option value="free">Freehand</option>
+            <option value="line">Line</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="ellipse">Ellipse</option>
+          </select>
+        </label>
+        <label class="checkbox"><input type="checkbox" id="fill-toggle" /> Fill shapes</label>
+        <div class="pill-group" id="grid-toggle">
+          <button data-grid="off" class="active">Plain</button>
+          <button data-grid="on">Grid</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="canvas-panel">
+      <div class="toolbar">
+        <div class="pill-group" id="history-buttons">
+          <button id="btn-undo" disabled>Undo</button>
+          <button id="btn-redo" disabled>Redo</button>
+          <button id="btn-clear">Clear</button>
+        </div>
+        <div class="palette" id="quick-palette"></div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="draw-canvas" width="1100" height="640" aria-label="Drawing canvas"></canvas>
+      </div>
+      <form id="save-form" class="save-form">
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" name="title" placeholder="Morning Sketch" required />
+        </div>
+        <div class="field">
+          <label for="artist">Artist</label>
+          <input id="artist" name="artist" placeholder="Your name" />
+        </div>
+        <div class="field">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" placeholder="Describe your inspiration (optional)" rows="2"></textarea>
+        </div>
+        <button class="primary" type="submit">Save to the museum</button>
+      </form>
+    </section>
+
+    <section class="gallery" aria-live="polite">
+      <header class="gallery-header">
+        <div>
+          <p class="label">Museum Wall</p>
+          <h2>Latest drawings</h2>
+          <p class="subtle">Tap a piece to load it onto the canvas or download it.</p>
+        </div>
+        <button id="btn-refresh" class="ghost">Refresh</button>
+      </header>
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </section>
+  </main>
+
+  <template id="gallery-card-template">
+    <article class="card">
+      <img class="thumb" alt="Drawing thumbnail" />
+      <div class="card-body">
+        <p class="card-title"></p>
+        <p class="card-meta"></p>
+        <div class="card-actions">
+          <button class="ghost load">Load on canvas</button>
+          <button class="ghost download">Download</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>
